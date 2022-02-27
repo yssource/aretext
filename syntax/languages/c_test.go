@@ -178,4 +178,3 @@ y = 5e-2;
 func FuzzCParseFunc(f *testing.F) {
 	FuzzParser(CParseFunc(), "testdata/c/*.c")(f)
 }
-
