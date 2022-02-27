@@ -521,3 +521,9 @@ fn main() {
 		})
 	}
 }
+
+func FuzzRustParseFunc(f *testing.F) {
+	FuzzParser(RustParseFunc(), "testdata/rust/*.rs")(f)
+}
+
+
