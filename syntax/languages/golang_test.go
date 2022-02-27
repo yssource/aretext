@@ -559,3 +559,7 @@ func TestGolangParseFunc(t *testing.T) {
 		})
 	}
 }
+
+func FuzzGolangParseFunc(f *testing.F) {
+	FuzzParser(GolangParseFunc(), "testdata/golang/*.go")(f)
+}
