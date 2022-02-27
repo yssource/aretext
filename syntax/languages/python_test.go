@@ -325,3 +325,8 @@ if __name__ == "__main__":
 		})
 	}
 }
+
+func FuzzPythonParseFunc(f *testing.F) {
+	FuzzParser(PythonParseFunc(), "testdata/python/*.py")(f)
+}
+
