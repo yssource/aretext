@@ -1,11 +1,14 @@
 package languages
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 
 	"github.com/aretext/aretext/syntax/parser"
+	"github.com/aretext/aretext/text"
 )
 
 func TestYamlParseFunc(t *testing.T) {
@@ -309,4 +312,18 @@ baz:
 			assert.Equal(t, tc.expected, tokens)
 		})
 	}
+}
+
+func FuzzYamlParseFunc(f *testing.F) {
+	f.Add("{key: val}")
+	// TODO: move this to syntax/languages/testutil
+	f.Fuzz(func(t *testing.T, data string) {
+		tree, err := text.NewTreeFromString(data)
+		if errors.Is(err, text.InvalidUtf8Error) {
+			return
+		}
+		require.NoError(t, err)
+		p := parser.New(YamlParseFunc())
+		p.ParseAll(tree)
+	})
 }
