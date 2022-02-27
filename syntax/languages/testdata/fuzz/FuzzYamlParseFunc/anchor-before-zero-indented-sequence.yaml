@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("---\nseq:\n &anchor\n- a\n- b\n\n")

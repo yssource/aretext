@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("- !!str \"a\"\n- 'b'\n- &anchor \"c\"\n- *anchor\n- !!str\n\n")

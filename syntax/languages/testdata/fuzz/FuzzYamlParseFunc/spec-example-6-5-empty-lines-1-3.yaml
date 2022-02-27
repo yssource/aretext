@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("Folding:\n  \"Empty line\n\n  as a line feed\"\nChomping: |\n  Clipped empty lines\n\n\n")

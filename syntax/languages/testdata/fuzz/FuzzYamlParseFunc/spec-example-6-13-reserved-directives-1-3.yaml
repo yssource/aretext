@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("%FOO  bar baz # Should be ignored\n              # with a warning.\n---\n\"foo\"\n\n")

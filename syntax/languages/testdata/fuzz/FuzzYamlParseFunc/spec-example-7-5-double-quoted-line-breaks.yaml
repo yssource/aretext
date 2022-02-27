@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("\"folded \nto a space,\t\n\nto a line feed, or \t\\\n \\ \tnon-content\"\n\n")

@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("? explicit key # Empty value\n? |\n  block key\n: - one # Explicit compact\n  - two # block value\n\n")

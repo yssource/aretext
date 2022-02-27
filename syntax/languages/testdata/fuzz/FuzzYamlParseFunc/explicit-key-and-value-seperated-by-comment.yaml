@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("---\n? key\n# comment\n: value\n\n")

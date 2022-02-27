@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("First occurrence: &anchor Foo\nSecond occurrence: *anchor\nOverride anchor: &anchor Bar\nReuse anchor: *anchor\n\n")

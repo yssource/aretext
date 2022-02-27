@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("--- >\n  Mark McGwire's\n  year was crippled\n  by a knee injury.\n\n")

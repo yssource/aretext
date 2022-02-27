@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("a: |\n ab\n\n cd\n ef\n\n\n...\n\n")

@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("- bla\"keks: foo\n- bla]keks: foo\n\n")

@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("---\n- !!int 1\n- !!int -2\n- !!int 33\n\n")

@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("- |2-\n  explicit indent and chomp\n- |-2\n  chomp and explicit indent\n\n")

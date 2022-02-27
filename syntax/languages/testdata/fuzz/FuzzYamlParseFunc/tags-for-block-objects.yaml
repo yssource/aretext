@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("foo: !!seq\n  - !!str a\n  - !!map\n    key: !!str value\n\n")

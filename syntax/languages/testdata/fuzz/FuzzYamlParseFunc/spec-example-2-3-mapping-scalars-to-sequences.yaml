@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("american:\n  - Boston Red Sox\n  - Detroit Tigers\n  - New York Yankees\nnational:\n  - New York Mets\n  - Chicago Cubs\n  - Atlanta Braves\n\n")

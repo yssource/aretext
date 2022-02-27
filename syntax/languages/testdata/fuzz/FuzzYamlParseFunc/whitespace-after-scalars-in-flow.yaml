@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("- [a, b , c ]\n- { \"a\"  : b\n   , c : 'd' ,\n   e   : \"f\"\n  }\n- [      ]\n\n")

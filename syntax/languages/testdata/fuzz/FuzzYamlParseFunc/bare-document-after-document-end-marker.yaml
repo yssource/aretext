@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("---\nscalar1\n...\nkey: value\n\n")

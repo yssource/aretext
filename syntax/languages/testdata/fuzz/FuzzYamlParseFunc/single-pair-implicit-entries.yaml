@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("- [ YAML : separate ]\n- [ \"JSON like\":adjacent ]\n- [ {JSON: like}:adjacent ]\n\n")

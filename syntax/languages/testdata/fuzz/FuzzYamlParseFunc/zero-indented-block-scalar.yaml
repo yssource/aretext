@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("--- >\nline1\nline2\nline3\n\n")

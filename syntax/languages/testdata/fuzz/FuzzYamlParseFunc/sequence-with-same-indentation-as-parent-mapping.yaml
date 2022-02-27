@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("one:\n- 2\n- 3\nfour: 5\n\n")

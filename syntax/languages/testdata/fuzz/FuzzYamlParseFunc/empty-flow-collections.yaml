@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("---\nnested sequences:\n- - - []\n- - - {}\nkey1: []\nkey2: {}\n\n")

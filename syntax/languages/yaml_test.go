@@ -315,10 +315,9 @@ baz:
 }
 
 func FuzzYamlParseFunc(f *testing.F) {
-	f.Add("{key: val}")
 	// TODO: move this to syntax/languages/testutil
-	f.Fuzz(func(t *testing.T, data string) {
-		tree, err := text.NewTreeFromString(data)
+	f.Fuzz(func(t *testing.T, data []byte) {
+		tree, err := text.NewTreeFromString(string(data))
 		if errors.Is(err, text.InvalidUtf8Error) {
 			return
 		}

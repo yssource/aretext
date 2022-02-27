@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("# Tabs and spaces\nquoted: \"Quoted \t\"\nblock:\t|\n  void main() {\n  \tprintf(\"Hello, world!\\n\");\n  }\n\n")

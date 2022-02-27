@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("---\ntime: 20:03:20\nplayer: Sammy Sosa\naction: strike (miss)\n...\n---\ntime: 20:03:47\nplayer: Sammy Sosa\naction: grand slam\n...\n\n")

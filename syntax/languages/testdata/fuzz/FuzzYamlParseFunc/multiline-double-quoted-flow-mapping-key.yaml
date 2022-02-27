@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("---\n- { \"single line\": value}\n- { \"multi\n  line\": value}\n\n")

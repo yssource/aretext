@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("# XXX Why are tabs allowed as indentation after dash?\n- foo:\t bar\n- - baz\n  -\tbaz\n\n")

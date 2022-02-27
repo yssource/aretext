@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("key:\n  value\n  with\n\t\n  tabs\n\n")

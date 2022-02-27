@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("- sun: yellow\n- ? earth: blue\n  : moon: white\n\n")

@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("---\nhr:\n  - Mark McGwire\n  # Following node labeled SS\n  - &SS Sammy Sosa\nrbi:\n  - *SS # Subsequent occurrence\n  - Ken Griffey\n\n")

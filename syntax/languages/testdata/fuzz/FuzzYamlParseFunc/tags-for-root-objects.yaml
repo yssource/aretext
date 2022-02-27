@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("--- !!map\n? a\n: b\n--- !!seq\n- !!str c\n--- !!str\nd\ne\n\n")

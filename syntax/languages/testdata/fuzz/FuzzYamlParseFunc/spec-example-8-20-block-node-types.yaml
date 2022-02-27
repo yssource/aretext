@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("-\n  \"flow in block\"\n- >\n Block scalar\n- !!map # Block collection\n  foo : bar\n\n")

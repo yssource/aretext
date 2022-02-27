@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("First occurrence: &anchor Value\nSecond occurrence: *anchor\n\n")

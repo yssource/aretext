@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("\"foo\\nbar:baz\\tx \\\\$%^&*()x\": 23\n'x\\ny:z\\tx $%^&*()x': 24\n\n")

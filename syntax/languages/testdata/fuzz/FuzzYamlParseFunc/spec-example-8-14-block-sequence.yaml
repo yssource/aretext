@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("block sequence:\n  - one\n  - two : three\n\n")

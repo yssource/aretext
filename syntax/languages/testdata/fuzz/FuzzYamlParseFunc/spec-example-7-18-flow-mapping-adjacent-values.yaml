@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("{\n\"adjacent\":value,\n\"readable\": value,\n\"empty\":\n}\n\n")

@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("? a\n  true\n: null\n  d\n? e\n  42\n\n")

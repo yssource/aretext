@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("# Ranking of 1998 home runs\n---\n- Mark McGwire\n- Sammy Sosa\n- Ken Griffey\n\n# Team ranking\n---\n- Chicago Cubs\n- St Louis Cardinals\n\n")

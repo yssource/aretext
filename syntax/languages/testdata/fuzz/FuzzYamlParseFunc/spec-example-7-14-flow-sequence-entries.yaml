@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("[\n\"double\n quoted\", 'single\n           quoted',\nplain\n text, [ nested ],\nsingle: pair,\n]\n\n")

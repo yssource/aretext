@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("---\n[ word1\n# comment\n, word2]\n\n")

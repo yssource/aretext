@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("{\n? explicit: entry,\nimplicit: entry,\n?\n}\n\n")

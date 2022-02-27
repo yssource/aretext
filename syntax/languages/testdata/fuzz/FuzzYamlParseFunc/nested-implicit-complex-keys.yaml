@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("---\n[\n  [ a, [ [[b,c]]: d, e]]: 23\n]\n\n")
