@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("sequence: [ one, two, ]\nmapping: { sky: blue, sea: green }\n\n")

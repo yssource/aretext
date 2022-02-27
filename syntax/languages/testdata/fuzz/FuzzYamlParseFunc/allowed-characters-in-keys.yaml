@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("a!\"#$%&'()*+,-./09:;<=>?@AZ[\\]^_`az{|}~: safe\n?foo: safe question mark\n:foo: safe colon\n-foo: safe dash\nthis is#not: a comment\n\n")

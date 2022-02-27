@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("---\nk:#foo\n &a !t s\n\n")

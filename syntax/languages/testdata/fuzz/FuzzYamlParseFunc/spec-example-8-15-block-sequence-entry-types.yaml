@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("- # Empty\n- |\n block node\n- - one # Compact\n  - two # sequence\n- one: two # Compact mapping\n\n")

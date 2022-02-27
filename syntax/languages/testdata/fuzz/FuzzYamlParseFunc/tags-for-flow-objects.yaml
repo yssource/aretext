@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("!!map {\n  k: !!seq\n  [ a, !!str b]\n}\n\n")

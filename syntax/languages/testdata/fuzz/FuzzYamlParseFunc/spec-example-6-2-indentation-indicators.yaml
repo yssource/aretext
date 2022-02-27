@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("# XXX Why are tabs allowed as indentation after dash?\n? a\n: -\tb\n  -  -\tc\n     - d\n\n")

@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("---\n\"folded \nto a space,\n\nto a line feed, or \t\\\n \\ \tnon-content\"\n\n")

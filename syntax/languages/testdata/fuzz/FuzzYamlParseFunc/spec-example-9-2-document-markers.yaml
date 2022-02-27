@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("# XXX Why is a comment allowed on ...?\n    %YAML 1.2\n    ---\n    Document\n    ... # Suffix\n\n")

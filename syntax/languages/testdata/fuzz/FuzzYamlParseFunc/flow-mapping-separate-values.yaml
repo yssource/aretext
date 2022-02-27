@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("{\nunquoted : \"separate\",\nhttp://foo.com,\nomitted value:,\n}\n\n")

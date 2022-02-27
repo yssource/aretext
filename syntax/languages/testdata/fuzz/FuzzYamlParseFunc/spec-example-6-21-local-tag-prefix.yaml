@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("%TAG !m! !my-\n--- # Bulb here\n!m!light fluorescent\n...\n%TAG !m! !my-\n--- # Color here\n!m!light green\n\n")

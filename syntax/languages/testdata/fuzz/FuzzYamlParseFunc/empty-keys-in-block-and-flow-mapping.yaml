@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("---\nkey: value\n: empty key\n---\n{\n key: value, : empty key\n}\n---\n# empty key and value\n:\n---\n# empty key and value\n{ : }\n\n")

@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("# XXX Why is ? supported in flow?\n{\n  ? foo :,\n  : bar,\n}\n\n")

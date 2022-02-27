@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("- |\n detected\n- >\n\n\n  # detected\n- |1\n  explicit\n- >\n\n detected\n\n")

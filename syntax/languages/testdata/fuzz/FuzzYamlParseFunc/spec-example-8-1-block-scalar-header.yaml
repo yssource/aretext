@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("- | # Empty header↓\n literal\n- >1 # Indentation indicator↓\n  folded\n- |+ # Chomping indicator↓\n keep\n\n- >1- # Both indicators↓\n  strip\n\n")

@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("---\n---word1\nword2\n\n")

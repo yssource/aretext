@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("plain key: in-line value\n: # Both empty\n\"quoted key\":\n- entry\n\n")

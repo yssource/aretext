@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("---\n# Products purchased\n- item    : Super Hoop\n  quantity: 1\n- item    : Basketball\n  quantity: 4\n- item    : Big Shoes\n  quantity: 1\n\n")

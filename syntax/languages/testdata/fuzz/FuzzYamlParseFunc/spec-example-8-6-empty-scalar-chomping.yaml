@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("strip: >-\n\nclip: >\n\nkeep: |+\n\n")

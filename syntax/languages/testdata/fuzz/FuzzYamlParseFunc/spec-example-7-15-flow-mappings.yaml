@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("- { one : two , three: four , }\n- {five: six,seven : eight}\n\n")

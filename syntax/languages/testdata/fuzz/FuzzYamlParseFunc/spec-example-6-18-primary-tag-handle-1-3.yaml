@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("# Private\n---\n!foo \"bar\"\n...\n# Global\n%TAG ! tag:example.com,2000:app/\n---\n!foo \"bar\"\n\n")

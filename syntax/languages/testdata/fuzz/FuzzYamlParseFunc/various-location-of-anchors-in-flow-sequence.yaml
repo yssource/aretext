@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("&flowseq [\n a: b,\n &c c: d,\n { &e e: f },\n &g { g: h }\n]\n\n")

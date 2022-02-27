@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("- &a !!str a\n- !!int 2\n- !!int &c 4\n- &d d\n\n")

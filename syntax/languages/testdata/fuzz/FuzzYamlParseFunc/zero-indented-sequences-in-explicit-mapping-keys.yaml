@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("---\n?\n- a\n- b\n:\n- c\n- d\n\n")

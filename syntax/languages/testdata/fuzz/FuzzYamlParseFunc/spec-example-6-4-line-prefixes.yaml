@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("plain: text\n  lines\nquoted: \"text\n  \tlines\"\nblock: |\n  text\n   \tlines\n\n")

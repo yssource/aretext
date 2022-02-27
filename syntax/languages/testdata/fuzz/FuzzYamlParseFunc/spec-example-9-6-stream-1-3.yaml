@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("Mapping: Document\n---\n# Empty\n...\n%YAML 1.2\n---\nmatches %: 20\n\n")

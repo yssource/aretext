@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("--- >-\n  trimmed\n\n\n\n  as\n  space\n\n")

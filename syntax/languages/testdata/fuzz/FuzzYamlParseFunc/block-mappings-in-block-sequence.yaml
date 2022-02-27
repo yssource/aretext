@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("- key: value\n  key2: value2\n-\n  key3: value3\n\n")

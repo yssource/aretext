@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("implicit block key : [\n  implicit flow key : value,\n ]\n\n")

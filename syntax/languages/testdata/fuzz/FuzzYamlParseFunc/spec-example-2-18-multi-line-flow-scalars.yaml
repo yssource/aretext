@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("plain:\n  This unquoted scalar\n  spans many lines.\n\nquoted: \"So does this\n  quoted scalar.\\n\"\n\n")

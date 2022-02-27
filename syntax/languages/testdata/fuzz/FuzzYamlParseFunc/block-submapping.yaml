@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("foo:\n  bar: 1\nbaz: 2\n\n")

@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("- plain\n- \"double quoted\"\n- 'single quoted'\n- >\n  block\n- plain again\n\n")

@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("%TAG !yaml! tag:yaml.org,2002:\n---\n!yaml!str \"foo\"\n\n")

@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("# ASCII Art\n--- |\n  \\//||\\/||\n  // ||  ||__\n\n")

@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("---\n&mapping\n&key [ &item a, b, c ]: value\n\n")

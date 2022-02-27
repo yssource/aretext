@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("- a?string\n- another ? string\n- key: value?\n- [a?string]\n- [another ? string]\n- {key: value? }\n- {key: value?}\n- {key?: value }\n\n")

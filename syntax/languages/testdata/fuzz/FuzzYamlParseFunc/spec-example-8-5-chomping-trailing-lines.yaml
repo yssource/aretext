@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte(" # Strip\n  # Comments:\nstrip: |-\n  # text\n\n # Clip\n  # comments:\n\nclip: |\n  # text\n\n # Keep\n  # comments:\n\nkeep: |+\n  # text\n\n # Trail\n  # comments.\n\n")

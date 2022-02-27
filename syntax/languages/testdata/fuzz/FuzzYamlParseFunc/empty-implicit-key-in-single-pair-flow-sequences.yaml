@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("- [ : empty key ]\n- [: another empty key]\n\n")

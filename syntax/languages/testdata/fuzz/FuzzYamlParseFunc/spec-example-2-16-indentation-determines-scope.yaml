@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("name: Mark McGwire\naccomplishment: >\n  Mark set a major league\n  home run record in 1998.\nstats: |\n  65 Home Runs\n  0.278 Batting Average\n\n")

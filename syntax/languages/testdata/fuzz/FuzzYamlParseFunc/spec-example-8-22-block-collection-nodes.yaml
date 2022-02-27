@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("sequence: !!seq\n- entry\n- !!seq\n - nested\nmapping: !!map\n foo: bar\n\n")

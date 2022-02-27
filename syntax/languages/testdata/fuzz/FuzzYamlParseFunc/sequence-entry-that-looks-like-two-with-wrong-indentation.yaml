@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("- single multiline\n - sequence entry\n\n")

@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("!!str a: b\nc: !!int 42\ne: !!str f\ng: h\n!!str 23: !!bool false\n\n")

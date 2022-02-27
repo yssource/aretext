@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("hr:  65    # Home runs\navg: 0.278 # Batting average\nrbi: 147   # Runs Batted In\n\n")

@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("!<tag:yaml.org,2002:str> foo :\n  !<!bar> baz\n\n")

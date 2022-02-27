@@ -3,9 +3,11 @@ package languages
 import (
 	"math"
 	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 
+	"github.com/pkg/errors"
 	"github.com/stretchr/testify/require"
 
 	"github.com/aretext/aretext/syntax/parser"
@@ -67,4 +69,50 @@ func ParserBenchmark(f parser.Func, path string) func(*testing.B) {
 			p.ParseAll(tree)
 		}
 	}
+}
+
+// FuzzParser runs a fuzz test on a parser with seed files matching `globPattern`
+func FuzzParser(parseFunc parser.Func, globPattern string) func(f *testing.F) {
+	return func(f *testing.F) {
+		seeds, err := loadFuzzTestSeeds(f, globPattern)
+		if err != nil {
+			f.Fatalf("Could not load fuzz test seeds: %s\n", err)
+		}
+
+		for _, seed := range seeds {
+			f.Add(seed)
+		}
+
+		f.Fuzz(func(t *testing.T, data string) {
+			tree, err := text.NewTreeFromString(data)
+			if errors.Is(err, text.InvalidUtf8Error) {
+				t.Skip()
+			}
+			require.NoError(t, err)
+			p := parser.New(parseFunc)
+			p.ParseAll(tree)
+		})
+	}
+}
+
+func loadFuzzTestSeeds(f *testing.F, globPattern string) ([]string, error) {
+	seeds := make([]string, 0)
+
+	f.Logf("Loading seed files matching glob pattern '%s'\n", globPattern)
+	matches, err := filepath.Glob(globPattern)
+	if err != nil {
+		return nil, errors.Wrapf(err, "filepath.Glob")
+	}
+
+	for _, path := range matches {
+		data, err := os.ReadFile(path)
+		if err != nil {
+			return nil, errors.Wrapf(err, "os.ReadFile")
+		}
+
+		f.Logf("Loaded seed file %s\n", path)
+		seeds = append(seeds, string(data))
+	}
+
+	return seeds, nil
 }

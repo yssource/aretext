@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("Mark McGwire: {hr: 65, avg: 0.278}\nSammy Sosa: {\n    hr: 63,\n    avg: 0.288\n  }\n\n")

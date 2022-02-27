@@ -1,2 +1,0 @@
-go test fuzz v1
-[]byte("? !!str a\n: !!int 47\n? c\n: !!str d\n\n")
