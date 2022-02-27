@@ -319,7 +319,7 @@ func FuzzYamlParseFunc(f *testing.F) {
 	f.Fuzz(func(t *testing.T, data []byte) {
 		tree, err := text.NewTreeFromString(string(data))
 		if errors.Is(err, text.InvalidUtf8Error) {
-			return
+			t.Skip()
 		}
 		require.NoError(t, err)
 		p := parser.New(YamlParseFunc())
