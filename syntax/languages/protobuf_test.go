@@ -159,3 +159,8 @@ message Outer {
 		})
 	}
 }
+
+func FuzzProtobufParseFunc(f *testing.F) {
+	FuzzParser(ProtobufParseFunc(), "testdata/protobuf/*.proto")(f)
+}
+
