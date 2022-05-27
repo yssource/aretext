@@ -667,7 +667,18 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 10,
 			expectedText:      "ab   cd   ",
 		},
-		// TODO: delete a word with count
+		{
+			name:        "delete a word with count",
+			initialText: "apple banana pear orange",
+			events: []tcell.Event{
+				tcell.NewEventKey(tcell.KeyRune, '2', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'd', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'a', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'w', tcell.ModNone),
+			},
+			expectedCursorPos: 0,
+			expectedText:      "pear orange",
+		},
 		{
 			name:        "delete inner word",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
