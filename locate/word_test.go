@@ -434,6 +434,7 @@ func TestNextWordStartInLineOrAfterEmptyLine(t *testing.T) {
 			count:       1,
 			expectedPos: 5,
 		},
+		// TODO
 	}
 
 	for _, tc := range testCases {

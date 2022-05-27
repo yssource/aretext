@@ -596,6 +596,7 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 4,
 			expectedText:      "a\n  \nbcd",
 		},
+		// TODO: delete to start of next word with count
 		{
 			name:        "delete a word",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
@@ -656,6 +657,7 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 10,
 			expectedText:      "ab   cd   ",
 		},
+		// TODO: delete a word with count
 		{
 			name:        "delete inner word",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
@@ -669,6 +671,7 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 18,
 			expectedText:      "Lorem ipsum dolor\n amet consectetur\nadipiscing elit",
 		},
+		// TODO: delete inner word with count
 		{
 			name:        "delete to next matching character in line",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
@@ -764,6 +767,7 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 2,
 			expectedText:      "foo ipsum dolor\nsit amet consectetur\nadipiscing elit",
 		},
+		// TODO: change to start of next word with count
 		{
 			name:        "change a word",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
@@ -789,6 +793,7 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 28,
 			expectedText:      "Lorem ipsum dolor\nsit foobar consectetur\nadipiscing elit",
 		},
+		// TODO: change a word with count
 		{
 			name:        "change inner word",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
@@ -812,6 +817,7 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 27,
 			expectedText:      "Lorem ipsum dolor\nsit foobar consectetur\nadipiscing elit",
 		},
+		// TODO: change inner word with count
 		{
 			name:        "change to next matching char in line",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
@@ -1000,6 +1006,7 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 23,
 			expectedText:      "Lorem ipsum dolor\nLorem \nsit amet consectetur\nadipiscing elit",
 		},
+		// TODO: yank to start of next word with count
 		{
 			name:        "yank a word",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
@@ -1016,6 +1023,7 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 23,
 			expectedText:      "Lorem ipsum dolor\nipsum \nsit amet consectetur\nadipiscing elit",
 		},
+		// TODO: yank a word with count
 		{
 			name:        "yank inner word",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
@@ -1031,6 +1039,7 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 22,
 			expectedText:      "Lorem ipsum dolor\nLorem\nsit amet consectetur\nadipiscing elit",
 		},
+		// TODO: yank inner word with count
 		{
 			name:        "yank line",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
