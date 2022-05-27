@@ -412,7 +412,9 @@ func ChangeWord(count uint64, clipboardPage clipboard.PageId) Action {
 		state.DeleteRunes(s, func(params state.LocatorParams) uint64 {
 			// Unlike "dw", "cw" within a word excludes whitespace after the word by default.
 			// See https://vimhelp.org/change.txt.html
-			return locate.NextWordEnd(params.TextTree, params.CursorPos, count) + 1 // Need to add one to include the last char.
+			// Use NextWordEnd so that repeating `count` times deletes `count` words,
+			// then add one to include the last char.
+			return locate.NextWordEnd(params.TextTree, params.CursorPos, count) + 1
 		}, clipboardPage)
 		EnterInsertMode(s)
 	}
