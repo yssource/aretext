@@ -59,7 +59,7 @@ func CursorPrevWordStart(s *state.EditorState) {
 
 func CursorNextWordEnd(s *state.EditorState) {
 	state.MoveCursor(s, func(params state.LocatorParams) uint64 {
-		return locate.NextWordEnd(params.TextTree, params.CursorPos)
+		return locate.NextWordEnd(params.TextTree, params.CursorPos, 1)
 	})
 }
 
@@ -412,7 +412,7 @@ func ChangeWord(count uint64, clipboardPage clipboard.PageId) Action {
 		state.DeleteRunes(s, func(params state.LocatorParams) uint64 {
 			// Unlike "dw", "cw" within a word excludes whitespace after the word by default.
 			// See https://vimhelp.org/change.txt.html
-			return locate.CurrentWordEnd(params.TextTree, params.CursorPos, count)
+			return locate.NextWordEnd(params.TextTree, params.CursorPos, count) + 1 // Need to add one to include the last char.
 		}, clipboardPage)
 		EnterInsertMode(s)
 	}
