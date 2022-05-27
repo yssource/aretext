@@ -878,7 +878,22 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 27,
 			expectedText:      "Lorem ipsum dolor\nsit foobar consectetur\nadipiscing elit",
 		},
-		// TODO: change inner word with count
+		{
+			name:        "change inner word with count",
+			initialText: "apple banana pear orange",
+			events: []tcell.Event{
+				tcell.NewEventKey(tcell.KeyRune, '3', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'c', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'i', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'w', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'f', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'o', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'o', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyEsc, '\x00', tcell.ModNone),
+			},
+			expectedCursorPos: 2,
+			expectedText:      "foo pear orange",
+		},
 		{
 			name:        "change to next matching char in line",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
