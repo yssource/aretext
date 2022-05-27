@@ -86,15 +86,17 @@ func NextWordStartInLine(textTree *text.Tree, pos uint64, count uint64) uint64 {
 // NextWordStartInLineOrAfterEmptyLine is the same as NextWordStartInLine, except it includes
 // the newline at the end of an empty line.
 func NextWordStartInLineOrAfterEmptyLine(textTree *text.Tree, pos uint64, count uint64) uint64 {
-	nextPos := NextWordStartInLine(textTree, pos, count)
+	return repeatCountTimes(pos, count, func(pos uint64) uint64 {
+		nextPos := NextWordStartInLine(textTree, pos, 1)
 
-	// The cursor didn't move, so we may be on any empty line.
-	// If so, move past the empty line.
-	if nextPos == pos {
-		nextPos = afterEmptyLine(textTree, pos)
-	}
+		// The cursor didn't move, so we may be on any empty line.
+		// If so, move past the empty line.
+		if nextPos == pos {
+			nextPos = afterEmptyLine(textTree, pos)
+		}
 
-	return nextPos
+		return nextPos
+	})
 }
 
 // PrevWordStart locates the start of the word before the cursor.
