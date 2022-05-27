@@ -225,36 +225,38 @@ func CurrentWordEnd(textTree *text.Tree, pos uint64, count uint64) uint64 {
 
 // CurrentWordEndWithTrailingWhitespace returns the end of the whitespace after current word.
 func CurrentWordEndWithTrailingWhitespace(textTree *text.Tree, pos uint64, count uint64) uint64 {
-	// Find the end of the current word.
-	endOfWordPos := CurrentWordEnd(textTree, pos, count)
+	return repeatCountTimes(pos, count, func(pos uint64) uint64 {
+		// Find the end of the current word.
+		endOfWordPos := CurrentWordEnd(textTree, pos, 1)
 
-	// Continue to the next non-whitespace or line boundary.
-	nextPos := nextWordBoundary(textTree, endOfWordPos, func(gcOffset uint64, s1, s2 *segment.Segment) wordBoundaryDecision {
-		if s2.NumRunes() == 0 {
-			// Stop after EOF.
-			return boundaryAfter
+		// Continue to the next non-whitespace or line boundary.
+		nextPos := nextWordBoundary(textTree, endOfWordPos, func(gcOffset uint64, s1, s2 *segment.Segment) wordBoundaryDecision {
+			if s2.NumRunes() == 0 {
+				// Stop after EOF.
+				return boundaryAfter
+			}
+
+			if s2.HasNewline() {
+				// Stop at newline.
+				return boundaryAfter
+			}
+
+			if !s2.IsWhitespace() {
+				// Stop at first non-whitespace.
+				return boundaryAfter
+			}
+
+			return noBoundary
+		})
+
+		// The cursor didn't move, so we may be on any empty line.
+		// If so, move past the empty line.
+		if nextPos == pos {
+			nextPos = afterEmptyLine(textTree, pos)
 		}
 
-		if s2.HasNewline() {
-			// Stop at newline.
-			return boundaryAfter
-		}
-
-		if !s2.IsWhitespace() {
-			// Stop at first non-whitespace.
-			return boundaryAfter
-		}
-
-		return noBoundary
+		return nextPos
 	})
-
-	// The cursor didn't move, so we may be on any empty line.
-	// If so, move past the empty line.
-	if nextPos == pos {
-		nextPos = afterEmptyLine(textTree, pos)
-	}
-
-	return nextPos
 }
 
 // isPunct returns whether a grapheme cluster should be treated as punctuation for determining word boundaries.
