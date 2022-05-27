@@ -404,6 +404,23 @@ func DeleteInnerWord(count uint64, clipboardPage clipboard.PageId) Action {
 	}
 }
 
+func ChangeWord(count uint64, clipboardPage clipboard.PageId) Action {
+	return func(s *state.EditorState) {
+		state.MoveCursor(s, func(params state.LocatorParams) uint64 {
+			return locate.CurrentWordStart(params.TextTree, params.CursorPos)
+		})
+		state.DeleteRunes(s, func(params state.LocatorParams) uint64 {
+			// Unlike "dw", "cw" excludes whitespace after the word by default.
+			// See https://vimhelp.org/change.txt.html
+			return locate.CurrentWordEnd(params.TextTree, params.CursorPos, count)
+		}, clipboardPage)
+		state.MoveCursor(s, func(params state.LocatorParams) uint64 {
+			return locate.NextNonWhitespaceOrNewline(params.TextTree, params.CursorPos)
+		})
+		EnterInsertMode(s)
+	}
+}
+
 func ChangeAWord(count uint64, clipboardPage clipboard.PageId) Action {
 	deleteAWordAction := DeleteAWord(count, clipboardPage)
 	return func(s *state.EditorState) {

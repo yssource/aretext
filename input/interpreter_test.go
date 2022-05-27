@@ -800,7 +800,7 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedText:      "foo ipsum dolor\nsit amet consectetur\nadipiscing elit",
 		},
 		{
-			name:        "change to start of next word with count",
+			name:        "change word with count",
 			initialText: "apple banana pear orange",
 			events: []tcell.Event{
 				tcell.NewEventKey(tcell.KeyRune, '3', tcell.ModNone),

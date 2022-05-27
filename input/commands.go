@@ -520,6 +520,17 @@ func NormalModeCommands() []Command {
 			},
 		},
 		{
+			Name: "change word (cw)",
+			BuildExpr: func() vm.Expr {
+				return cmdExpr("c", "w", captureOpts{count: true, clipboardPage: true})
+			},
+			BuildAction: func(ctx Context, p CommandParams) Action {
+				return decorateNormalOrVisual(
+					ChangeWord(p.Count, p.ClipboardPage),
+					addToMacro{lastAction: true, user: true})
+			},
+		},
+		{
 			Name: "change a word (caw)",
 			BuildExpr: func() vm.Expr {
 				return cmdExpr("c", "aw", captureOpts{count: true, clipboardPage: true})
@@ -531,15 +542,9 @@ func NormalModeCommands() []Command {
 			},
 		},
 		{
-			Name: "change word and change inner word (cw and ciw)",
+			Name: "change inner word (ciw)",
 			BuildExpr: func() vm.Expr {
-				// Unlike "dw", "cw" excludes whitespace after the word by default,
-				// so we alias it to "ciw" (change inner word).
-				// See https://vimhelp.org/change.txt.html
-				return altExpr(
-					cmdExpr("c", "w", captureOpts{count: true, clipboardPage: true}),
-					cmdExpr("c", "iw", captureOpts{count: true, clipboardPage: true}),
-				)
+				return cmdExpr("c", "iw", captureOpts{count: true, clipboardPage: true})
 			},
 			BuildAction: func(ctx Context, p CommandParams) Action {
 				return decorateNormalOrVisual(
