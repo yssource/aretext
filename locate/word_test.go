@@ -688,96 +688,112 @@ func TestCurrentWordEnd(t *testing.T) {
 		name        string
 		inputString string
 		pos         uint64
+		count       uint64
 		expectedPos uint64
 	}{
 		{
 			name:        "empty",
 			inputString: "",
 			pos:         0,
+			count: 1,
 			expectedPos: 0,
 		},
 		{
 			name:        "end of document",
 			inputString: "abc   defg   hijk",
 			pos:         14,
+			count: 1,
 			expectedPos: 17,
 		},
 		{
 			name:        "start of word in middle of document",
 			inputString: "abc   defg   hij",
 			pos:         6,
+			count: 1,
 			expectedPos: 10,
 		},
 		{
 			name:        "middle of word to end of word",
 			inputString: "abc   defg   hij",
 			pos:         7,
+			count: 1,
 			expectedPos: 10,
 		},
 		{
 			name:        "end of word",
 			inputString: "abc   defg   hij",
 			pos:         9,
+			count: 1,
 			expectedPos: 10,
 		},
 		{
 			name:        "start of whitespace",
 			inputString: "abc   defg   hij",
 			pos:         3,
+			count: 1,
 			expectedPos: 6,
 		},
 		{
 			name:        "middle of whitespace",
 			inputString: "abc   defg   hij",
 			pos:         4,
+			count: 1,
 			expectedPos: 6,
 		},
 		{
 			name:        "end of whitespace",
 			inputString: "abc   defg   hij",
 			pos:         5,
+			count: 1,
 			expectedPos: 6,
 		},
 		{
 			name:        "word before end of line",
 			inputString: "abc\nxyz",
 			pos:         1,
+			count: 1,
 			expectedPos: 3,
 		},
 		{
 			name:        "whitespace at end of line",
 			inputString: "abc     \nxyz",
 			pos:         4,
+			count: 1,
 			expectedPos: 8,
 		},
 		{
 			name:        "empty line",
 			inputString: "abc\n\n   123",
 			pos:         4,
+			count: 1,
 			expectedPos: 4,
 		},
 		{
 			name:        "punctuation",
 			inputString: "abc/def/ghi",
 			pos:         5,
+			count: 1,
 			expectedPos: 7,
 		},
 		{
 			name:        "from non-punctuation, stop at punctuation",
 			inputString: "abc/def/ghi",
 			pos:         5,
+			count: 1,
 			expectedPos: 7,
 		},
 		{
 			name:        "on single punctuation char",
 			inputString: "abc/ghi",
 			pos:         3,
+			count: 1,
 			expectedPos: 4,
 		},
 		{
 			name:        "on multiple punctuation chars",
 			inputString: "abc///ghi",
 			pos:         4,
+			count: 1,
 			expectedPos: 6,
 		},
 	}
@@ -786,7 +802,7 @@ func TestCurrentWordEnd(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			textTree, err := text.NewTreeFromString(tc.inputString)
 			require.NoError(t, err)
-			actualPos := CurrentWordEnd(textTree, tc.pos)
+			actualPos := CurrentWordEnd(textTree, tc.pos, tc.count)
 			assert.Equal(t, tc.expectedPos, actualPos)
 		})
 	}
