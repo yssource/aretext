@@ -1082,6 +1082,9 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 23,
 			expectedText:      "Lorem ipsum dolor\nLorem \nsit amet consectetur\nadipiscing elit",
 		},
+		{
+			name: "yank to start of next word with count",
+		},
 		// TODO: yank to start of next word with count
 		{
 			name:        "yank a word",
