@@ -120,7 +120,7 @@ func currentWordEnvVar(state *EditorState) string {
 	textTree := buffer.textTree
 	cursorPos := buffer.cursor.position
 	wordStartPos := locate.CurrentWordStart(textTree, cursorPos)
-	wordEndPos := locate.CurrentWordEnd(textTree, cursorPos)
+	wordEndPos := locate.CurrentWordEnd(textTree, cursorPos, 1)
 	word := copyText(textTree, wordStartPos, wordEndPos-wordStartPos)
 	return strings.TrimSpace(word)
 }

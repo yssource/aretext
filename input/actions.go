@@ -368,10 +368,10 @@ func DeleteToStartOfLineNonWhitespace(clipboardPage clipboard.PageId) Action {
 	}
 }
 
-func DeleteToStartOfNextWord(clipboardPage clipboard.PageId) Action {
+func DeleteToStartOfNextWord(count uint64, clipboardPage clipboard.PageId) Action {
 	return func(s *state.EditorState) {
 		state.DeleteRunes(s, func(params state.LocatorParams) uint64 {
-			return locate.NextWordStartInLineOrAfterEmptyLine(params.TextTree, params.CursorPos)
+			return locate.NextWordStartInLineOrAfterEmptyLine(params.TextTree, params.CursorPos, count)
 		}, clipboardPage)
 		state.MoveCursor(s, func(params state.LocatorParams) uint64 {
 			return locate.NextNonWhitespaceOrNewline(params.TextTree, params.CursorPos)
@@ -379,13 +379,13 @@ func DeleteToStartOfNextWord(clipboardPage clipboard.PageId) Action {
 	}
 }
 
-func DeleteAWord(clipboardPage clipboard.PageId) Action {
+func DeleteAWord(count uint64, clipboardPage clipboard.PageId) Action {
 	return func(s *state.EditorState) {
 		state.MoveCursor(s, func(params state.LocatorParams) uint64 {
 			return locate.CurrentWordStart(params.TextTree, params.CursorPos)
 		})
 		state.DeleteRunes(s, func(params state.LocatorParams) uint64 {
-			return locate.CurrentWordEndWithTrailingWhitespace(params.TextTree, params.CursorPos)
+			return locate.CurrentWordEndWithTrailingWhitespace(params.TextTree, params.CursorPos, count)
 		}, clipboardPage)
 		state.MoveCursor(s, func(params state.LocatorParams) uint64 {
 			return locate.NextNonWhitespaceOrNewline(params.TextTree, params.CursorPos)
@@ -393,27 +393,27 @@ func DeleteAWord(clipboardPage clipboard.PageId) Action {
 	}
 }
 
-func DeleteInnerWord(clipboardPage clipboard.PageId) Action {
+func DeleteInnerWord(count uint64, clipboardPage clipboard.PageId) Action {
 	return func(s *state.EditorState) {
 		state.MoveCursor(s, func(params state.LocatorParams) uint64 {
 			return locate.CurrentWordStart(params.TextTree, params.CursorPos)
 		})
 		state.DeleteRunes(s, func(params state.LocatorParams) uint64 {
-			return locate.CurrentWordEnd(params.TextTree, params.CursorPos)
+			return locate.CurrentWordEnd(params.TextTree, params.CursorPos, count)
 		}, clipboardPage)
 	}
 }
 
-func ChangeAWord(clipboardPage clipboard.PageId) Action {
-	deleteAWordAction := DeleteAWord(clipboardPage)
+func ChangeAWord(count uint64, clipboardPage clipboard.PageId) Action {
+	deleteAWordAction := DeleteAWord(count, clipboardPage)
 	return func(s *state.EditorState) {
 		deleteAWordAction(s)
 		EnterInsertMode(s)
 	}
 }
 
-func ChangeInnerWord(clipboardPage clipboard.PageId) Action {
-	deleteInnerWordAction := DeleteInnerWord(clipboardPage)
+func ChangeInnerWord(count uint64, clipboardPage clipboard.PageId) Action {
+	deleteInnerWordAction := DeleteInnerWord(count, clipboardPage)
 	return func(s *state.EditorState) {
 		deleteInnerWordAction(s)
 		EnterInsertMode(s)
@@ -456,37 +456,37 @@ func OutdentLine(s *state.EditorState) {
 	state.OutdentLines(s, targetLineLoc)
 }
 
-func CopyToStartOfNextWord(clipboardPage clipboard.PageId) Action {
+func CopyToStartOfNextWord(count uint64, clipboardPage clipboard.PageId) Action {
 	return func(s *state.EditorState) {
 		startLoc := func(params state.LocatorParams) uint64 {
 			return params.CursorPos
 		}
 		endLoc := func(params state.LocatorParams) uint64 {
-			return locate.NextWordStartInLineOrAfterEmptyLine(params.TextTree, params.CursorPos)
+			return locate.NextWordStartInLineOrAfterEmptyLine(params.TextTree, params.CursorPos, count)
 		}
 		state.CopyRegion(s, clipboardPage, startLoc, endLoc)
 	}
 }
 
-func CopyAWord(clipboardPage clipboard.PageId) Action {
+func CopyAWord(count uint64, clipboardPage clipboard.PageId) Action {
 	return func(s *state.EditorState) {
 		startLoc := func(params state.LocatorParams) uint64 {
 			return locate.CurrentWordStart(params.TextTree, params.CursorPos)
 		}
 		endLoc := func(params state.LocatorParams) uint64 {
-			return locate.CurrentWordEndWithTrailingWhitespace(params.TextTree, params.CursorPos)
+			return locate.CurrentWordEndWithTrailingWhitespace(params.TextTree, params.CursorPos, count)
 		}
 		state.CopyRegion(s, clipboardPage, startLoc, endLoc)
 	}
 }
 
-func CopyInnerWord(clipboardPage clipboard.PageId) Action {
+func CopyInnerWord(count uint64, clipboardPage clipboard.PageId) Action {
 	return func(s *state.EditorState) {
 		startLoc := func(params state.LocatorParams) uint64 {
 			return locate.CurrentWordStart(params.TextTree, params.CursorPos)
 		}
 		endLoc := func(params state.LocatorParams) uint64 {
-			return locate.CurrentWordEnd(params.TextTree, params.CursorPos)
+			return locate.CurrentWordEnd(params.TextTree, params.CursorPos, count)
 		}
 		state.CopyRegion(s, clipboardPage, startLoc, endLoc)
 	}

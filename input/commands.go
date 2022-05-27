@@ -489,44 +489,44 @@ func NormalModeCommands() []Command {
 		{
 			Name: "delete to start of next word (dw)",
 			BuildExpr: func() vm.Expr {
-				return cmdExpr("d", "w", captureOpts{clipboardPage: true})
+				return cmdExpr("d", "w", captureOpts{count: true, clipboardPage: true})
 			},
 			BuildAction: func(ctx Context, p CommandParams) Action {
 				return decorateNormalOrVisual(
-					DeleteToStartOfNextWord(p.ClipboardPage),
+					DeleteToStartOfNextWord(p.Count, p.ClipboardPage),
 					addToMacro{lastAction: true, user: true})
 			},
 		},
 		{
 			Name: "delete a word (daw)",
 			BuildExpr: func() vm.Expr {
-				return cmdExpr("d", "aw", captureOpts{clipboardPage: true})
+				return cmdExpr("d", "aw", captureOpts{count: true, clipboardPage: true})
 			},
 			BuildAction: func(ctx Context, p CommandParams) Action {
 				return decorateNormalOrVisual(
-					DeleteAWord(p.ClipboardPage),
+					DeleteAWord(p.Count, p.ClipboardPage),
 					addToMacro{lastAction: true, user: true})
 			},
 		},
 		{
 			Name: "delete inner word (diw)",
 			BuildExpr: func() vm.Expr {
-				return cmdExpr("d", "iw", captureOpts{clipboardPage: true})
+				return cmdExpr("d", "iw", captureOpts{count: true, clipboardPage: true})
 			},
 			BuildAction: func(ctx Context, p CommandParams) Action {
 				return decorateNormalOrVisual(
-					DeleteInnerWord(p.ClipboardPage),
+					DeleteInnerWord(p.Count, p.ClipboardPage),
 					addToMacro{lastAction: true, user: true})
 			},
 		},
 		{
 			Name: "change a word (caw)",
 			BuildExpr: func() vm.Expr {
-				return cmdExpr("c", "aw", captureOpts{clipboardPage: true})
+				return cmdExpr("c", "aw", captureOpts{count: true, clipboardPage: true})
 			},
 			BuildAction: func(ctx Context, p CommandParams) Action {
 				return decorateNormalOrVisual(
-					ChangeAWord(p.ClipboardPage),
+					ChangeAWord(p.Count, p.ClipboardPage),
 					addToMacro{lastAction: true, user: true})
 			},
 		},
@@ -537,13 +537,13 @@ func NormalModeCommands() []Command {
 				// so we alias it to "ciw" (change inner word).
 				// See https://vimhelp.org/change.txt.html
 				return altExpr(
-					cmdExpr("c", "w", captureOpts{clipboardPage: true}),
-					cmdExpr("c", "iw", captureOpts{clipboardPage: true}),
+					cmdExpr("c", "w", captureOpts{count: true, clipboardPage: true}),
+					cmdExpr("c", "iw", captureOpts{count: true, clipboardPage: true}),
 				)
 			},
 			BuildAction: func(ctx Context, p CommandParams) Action {
 				return decorateNormalOrVisual(
-					ChangeInnerWord(p.ClipboardPage),
+					ChangeInnerWord(p.Count, p.ClipboardPage),
 					addToMacro{lastAction: true, user: true})
 			},
 		},
@@ -638,33 +638,33 @@ func NormalModeCommands() []Command {
 		{
 			Name: "yank to start of next word (yw)",
 			BuildExpr: func() vm.Expr {
-				return cmdExpr("y", "w", captureOpts{clipboardPage: true})
+				return cmdExpr("y", "w", captureOpts{count: true, clipboardPage: true})
 			},
 			BuildAction: func(ctx Context, p CommandParams) Action {
 				return decorateNormalOrVisual(
-					CopyToStartOfNextWord(p.ClipboardPage),
+					CopyToStartOfNextWord(p.Count, p.ClipboardPage),
 					addToMacro{lastAction: true, user: true})
 			},
 		},
 		{
 			Name: "yank a word (yaw)",
 			BuildExpr: func() vm.Expr {
-				return cmdExpr("y", "aw", captureOpts{clipboardPage: true})
+				return cmdExpr("y", "aw", captureOpts{count: true, clipboardPage: true})
 			},
 			BuildAction: func(ctx Context, p CommandParams) Action {
 				return decorateNormalOrVisual(
-					CopyAWord(p.ClipboardPage),
+					CopyAWord(p.Count, p.ClipboardPage),
 					addToMacro{lastAction: true, user: true})
 			},
 		},
 		{
 			Name: "yank inner word (yiw)",
 			BuildExpr: func() vm.Expr {
-				return cmdExpr("y", "iw", captureOpts{clipboardPage: true})
+				return cmdExpr("y", "iw", captureOpts{count: true, clipboardPage: true})
 			},
 			BuildAction: func(ctx Context, p CommandParams) Action {
 				return decorateNormalOrVisual(
-					CopyInnerWord(p.ClipboardPage),
+					CopyInnerWord(p.Count, p.ClipboardPage),
 					addToMacro{lastAction: true, user: true})
 			},
 		},
