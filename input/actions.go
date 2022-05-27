@@ -410,13 +410,10 @@ func ChangeWord(count uint64, clipboardPage clipboard.PageId) Action {
 			return locate.CurrentWordStart(params.TextTree, params.CursorPos)
 		})
 		state.DeleteRunes(s, func(params state.LocatorParams) uint64 {
-			// Unlike "dw", "cw" excludes whitespace after the word by default.
+			// Unlike "dw", "cw" within a word excludes whitespace after the word by default.
 			// See https://vimhelp.org/change.txt.html
 			return locate.CurrentWordEnd(params.TextTree, params.CursorPos, count)
 		}, clipboardPage)
-		state.MoveCursor(s, func(params state.LocatorParams) uint64 {
-			return locate.NextNonWhitespaceOrNewline(params.TextTree, params.CursorPos)
-		})
 		EnterInsertMode(s)
 	}
 }
