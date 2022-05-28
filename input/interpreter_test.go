@@ -597,8 +597,19 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedText:      "a\n  \nbcd",
 		},
 		{
-			name:        "delete to start of next word with count",
+			name:        "delete to start of next word with count within line",
 			initialText: "apple banana pear orange",
+			events: []tcell.Event{
+				tcell.NewEventKey(tcell.KeyRune, '3', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'd', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'w', tcell.ModNone),
+			},
+			expectedCursorPos: 0,
+			expectedText:      "orange",
+		},
+		{
+			name: "delete to start of next word with count into next line",
+			initialText: "apple\n banana pear \norange",
 			events: []tcell.Event{
 				tcell.NewEventKey(tcell.KeyRune, '3', tcell.ModNone),
 				tcell.NewEventKey(tcell.KeyRune, 'd', tcell.ModNone),
