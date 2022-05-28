@@ -96,7 +96,7 @@ func TestNextWordStart(t *testing.T) {
 	}
 }
 
-func TestNextWordOrLineStart(t *testing.T) {
+func TestNextWordStartOrLineBoundary(t *testing.T) {
 	testCases := []struct {
 		name        string
 		inputString string
@@ -272,13 +272,15 @@ func TestNextWordOrLineStart(t *testing.T) {
 			count:       3,
 			expectedPos: 18,
 		},
+
+		// TODO: test next after line boundary...
 	}
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			textTree, err := text.NewTreeFromString(tc.inputString)
 			require.NoError(t, err)
-			actualPos := NextWordOrLineStart(textTree, tc.pos, tc.count)
+			actualPos := NextWordStartOrLineBoundary(textTree, tc.pos, tc.count)
 			assert.Equal(t, tc.expectedPos, actualPos)
 		})
 	}

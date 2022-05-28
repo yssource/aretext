@@ -46,8 +46,8 @@ func NextWordStart(textTree *text.Tree, pos uint64) uint64 {
 	})
 }
 
-// NextWordOrLineStart locates the start of the next word or line.
-func NextWordOrLineStart(textTree *text.Tree, pos uint64, count uint64) uint64 {
+// NextWordStartOrLineBoundary locates the start of the next word or before/after the next line boundary.
+func NextWordStartOrLineBoundary(textTree *text.Tree, pos uint64, count uint64) uint64 {
 	return repeatCountTimes(pos, count, func(pos uint64) uint64 {
 		return nextWordBoundary(textTree, pos, func(gcOffset uint64, s1, s2 *segment.Segment) wordBoundaryDecision {
 			if s2.NumRunes() == 0 {
@@ -55,21 +55,14 @@ func NextWordOrLineStart(textTree *text.Tree, pos uint64, count uint64) uint64 {
 				return boundaryAfter
 			}
 
-/*
-			if s2.HasNewline() {
-				// Stop at end of line.
-				return boundaryAfter
-			}
-*/
-
 			if gcOffset == 0 {
 				// Skip the first boundary so the cursor doesn't get stuck
 				// at the start of the current word.
 				return noBoundary
 			}
 
-			if s1.HasNewline() {
-				// Stop at start of line.
+			if s1.HasNewline() || s2.HasNewline() {
+				// Stop at line boundaries.
 				return boundaryAfter
 			}
 
