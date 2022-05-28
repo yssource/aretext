@@ -251,8 +251,13 @@ func TestNextWordStartInLine(t *testing.T) {
 			count:       1,
 			expectedPos: 1,
 		},
-
-		// TODO: repeat count tests
+		{
+			name:        "count",
+			inputString: "apple pear banana orange peach",
+			pos:         1,
+			count:       3,
+			expectedPos: 18,
+		},
 	}
 
 	for _, tc := range testCases {
@@ -434,7 +439,13 @@ func TestNextWordStartInLineOrAfterEmptyLine(t *testing.T) {
 			count:       1,
 			expectedPos: 5,
 		},
-		// TODO
+		{
+			name:        "count",
+			inputString: "apple pear banana orange peach",
+			pos:         1,
+			count:       3,
+			expectedPos: 18,
+		},
 	}
 
 	for _, tc := range testCases {
@@ -511,7 +522,13 @@ func TestNextWordEnd(t *testing.T) {
 			count:       1,
 			expectedPos: 2,
 		},
-		// TODO
+		{
+			name:        "count",
+			inputString: "apple pear banana orange peach",
+			pos:         1,
+			count:       3,
+			expectedPos: 16,
+		},
 	}
 
 	for _, tc := range testCases {
@@ -807,7 +824,13 @@ func TestCurrentWordEnd(t *testing.T) {
 			count:       1,
 			expectedPos: 6,
 		},
-		// TODO
+		{
+			name:        "count",
+			inputString: "apple pear banana orange peach",
+			pos:         1,
+			count:       3,
+			expectedPos: 10,
+		},
 	}
 
 	for _, tc := range testCases {
@@ -933,7 +956,13 @@ func TestCurrentWordEndWithTrailingWhitespace(t *testing.T) {
 			count:       1,
 			expectedPos: 4,
 		},
-		// TODO
+		{
+			name:        "count",
+			inputString: "apple pear banana orange peach",
+			pos:         1,
+			count:       3,
+			expectedPos: 18,
+		},
 	}
 
 	for _, tc := range testCases {
