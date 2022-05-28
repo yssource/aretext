@@ -371,7 +371,7 @@ func DeleteToStartOfLineNonWhitespace(clipboardPage clipboard.PageId) Action {
 func DeleteToStartOfNextWord(count uint64, clipboardPage clipboard.PageId) Action {
 	return func(s *state.EditorState) {
 		state.DeleteRunes(s, func(params state.LocatorParams) uint64 {
-			return locate.NextWordStartInLineOrAfterEmptyLine(params.TextTree, params.CursorPos, count)
+			return locate.NextWordOrLineStart(params.TextTree, params.CursorPos, count)
 		}, clipboardPage)
 		state.MoveCursor(s, func(params state.LocatorParams) uint64 {
 			return locate.NextNonWhitespaceOrNewline(params.TextTree, params.CursorPos)
@@ -478,7 +478,7 @@ func CopyToStartOfNextWord(count uint64, clipboardPage clipboard.PageId) Action 
 			return params.CursorPos
 		}
 		endLoc := func(params state.LocatorParams) uint64 {
-			return locate.NextWordStartInLineOrAfterEmptyLine(params.TextTree, params.CursorPos, count)
+			return locate.NextWordOrLineStart(params.TextTree, params.CursorPos, count)
 		}
 		state.CopyRegion(s, clipboardPage, startLoc, endLoc)
 	}
