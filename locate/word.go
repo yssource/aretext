@@ -413,7 +413,7 @@ func afterEmptyLine(textTree *text.Tree, pos uint64) uint64 {
 	}
 }
 
-// TODO
+// repeatCountTimes repeats a function up to `count` times, terminating early if the position stops changing.
 func repeatCountTimes(pos uint64, count uint64, f func(pos uint64) uint64) uint64 {
 	if count == 1 {
 		return f(pos)
