@@ -55,10 +55,12 @@ func NextWordOrLineStart(textTree *text.Tree, pos uint64, count uint64) uint64 {
 				return boundaryAfter
 			}
 
+/*
 			if s2.HasNewline() {
 				// Stop at end of line.
 				return boundaryAfter
 			}
+*/
 
 			if gcOffset == 0 {
 				// Skip the first boundary so the cursor doesn't get stuck
@@ -66,12 +68,10 @@ func NextWordOrLineStart(textTree *text.Tree, pos uint64, count uint64) uint64 {
 				return noBoundary
 			}
 
-/*
 			if s1.HasNewline() {
 				// Stop at start of line.
-				return boundaryBefore
+				return boundaryAfter
 			}
-*/
 
 			s1ws, s2ws := s1.IsWhitespace(), s2.IsWhitespace()
 			if s1ws && !s2ws {
