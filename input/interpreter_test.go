@@ -1083,9 +1083,19 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedText:      "Lorem ipsum dolor\nLorem \nsit amet consectetur\nadipiscing elit",
 		},
 		{
-			name: "yank to start of next word with count",
+			name:        "yank to start of next word with count",
+			initialText: "apple banana pear orange",
+			events: []tcell.Event{
+				tcell.NewEventKey(tcell.KeyRune, '3', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'y', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'w', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'o', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyEsc, '\x00', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'p', tcell.ModNone),
+			},
+			expectedCursorPos: 42,
+			expectedText:      "apple banana pear orange\napple banana pear ",
 		},
-		// TODO: yank to start of next word with count
 		{
 			name:        "yank a word",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
