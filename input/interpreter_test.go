@@ -1143,7 +1143,22 @@ func TestInterpreterStateIntegration(t *testing.T) {
 			expectedCursorPos: 22,
 			expectedText:      "Lorem ipsum dolor\nLorem\nsit amet consectetur\nadipiscing elit",
 		},
-		// TODO: yank inner word with count
+		{
+			name:        "yank inner word with count",
+			initialText: "apple banana pear orange",
+			events: []tcell.Event{
+				tcell.NewEventKey(tcell.KeyRune, '3', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'y', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'i', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'w', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyEsc, '\x00', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'o', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyEsc, '\x00', tcell.ModNone),
+				tcell.NewEventKey(tcell.KeyRune, 'p', tcell.ModNone),
+			},
+			expectedCursorPos: 36,
+			expectedText:      "apple banana pear orange\napple banana",
+		},
 		{
 			name:        "yank line",
 			initialText: "Lorem ipsum dolor\nsit amet consectetur\nadipiscing elit",
