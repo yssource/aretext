@@ -44,15 +44,20 @@ func (wb *WordBreaker) ProcessRune(r rune) (canBreakBefore bool) {
 		}
 	}
 
+	// WB3d WSegSpace × WSegSpace
+	if wb.lastProp == wbPropWSegSpace && prop == wbPropWSegSpace {
+		canBreakBefore = false
+		goto done
+	}
+
+	
 	/*
-		Do not break within emoji zwj sequences.
-		WB3c ZWJ × \p{Extended_Pictographic}
-
-		Keep horizontal whitespace together.
-		WB3d WSegSpace × WSegSpace
-
 		Ignore Format and Extend characters, except after sot, CR, LF, and Newline. (See Section 6.2, Replacing Ignore Rules.) This also has the effect of: Any × (Format | Extend | ZWJ)
 		WB4 X (Extend | Format | ZWJ)* → X
+	*/
+	// TODO: need more state for this one...
+
+	/*
 
 		Do not break between most letters.
 		WB5 AHLetter × AHLetter
@@ -83,10 +88,10 @@ func (wb *WordBreaker) ProcessRune(r rune) (canBreakBefore bool) {
 		Do not break within emoji flag sequences. That is, do not break between regional indicator (RI) symbols if there is an odd number of RI characters before the break point.
 		WB15 sot (RI RI)* RI × RI
 		WB16 [^RI] (RI RI)* RI × RI
-
-		Otherwise, break everywhere (including around ideographs).
-		WB999 Any ÷ Any
 	*/
+
+	// WB999 Any ÷ Any
+	canBreakBefore = true
 
 done:
 	wb.lastProp = prop
