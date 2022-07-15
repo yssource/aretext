@@ -11,6 +11,10 @@ type WordBreaker struct {
 	lastProp wbProp
 }
 
+func isAHLetter(prop wbProp) bool {
+	return prop == wbPropALetter || prop == wbPropHebrew_Letter
+}
+
 func (wb *WordBreaker) ProcessRune(r rune) (canBreakBefore bool) {
 	prop := wbPropForRune(r)
 
@@ -57,10 +61,16 @@ func (wb *WordBreaker) ProcessRune(r rune) (canBreakBefore bool) {
 	*/
 	// TODO: need more state for this one...
 
+
+	// WB5 AHLetter × AHLetter
+	if isAHLetter(wb.lastProp) && isAHLetter(prop) {
+		canBreakBefore = false
+		goto done
+	}
+
 	/*
 
 		Do not break between most letters.
-		WB5 AHLetter × AHLetter
 
 		Do not break letters across certain punctuation.
 		WB6 AHLetter × (MidLetter | MidNumLetQ) AHLetter
