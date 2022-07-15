@@ -30,17 +30,21 @@ func (wb *WordBreaker) ProcessRune(r rune) (canBreakBefore bool) {
 		goto done
 	}
 
-	// WB3b   ÷ (Newline | CR | LF)
+	// WB3b ÷ (Newline | CR | LF)
 	if prop == wbPropNewline || prop == wbPropCR || prop == wbPropLF {
 		canBreakBefore = true
 		goto done
 	}
 
-	/*
-		Otherwise break before and after Newlines (including CR and LF)
-		WB3a (Newline | CR | LF) ÷
-		WB3b   ÷ (Newline | CR | LF)
+	// WB3c ZWJ × \p{Extended_Pictographic}
+	if wb.lastProp == wbPropZWJ {
+		if wbePropForRune(r) == wbePropExtended_Pictographic {
+			canBreakBefore = false
+			goto done
+		}
+	}
 
+	/*
 		Do not break within emoji zwj sequences.
 		WB3c ZWJ × \p{Extended_Pictographic}
 
