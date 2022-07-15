@@ -24,6 +24,14 @@ func (wb *WordBreaker) ProcessRune(r rune) (canBreakBefore bool) {
 		goto done
 	}
 
+	// WB3a (Newline | CR | LF) ÷
+	if wb.lastProp == wbPropNewline || wb.lastProp == wbPropCR || wb.lastProp == wbPropLF {
+		canBreakBefore = true
+		goto done
+	}
+
+	// WB3b   ÷ (Newline | CR | LF)
+
 	/*
 		Otherwise break before and after Newlines (including CR and LF)
 		WB3a (Newline | CR | LF) ÷
