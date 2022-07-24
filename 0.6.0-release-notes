@@ -1,0 +1,45 @@
+# Summary
+
+* Syntax highlighting for Markdown.
+* Syntax highlighting for [todo.txt](https://github.com/todotxt/todo.txt)
+* Allow customization of style background color, bold, italic, underline, and strikethrough.
+* Improve performance and memory usage of syntax highlighting.
+* Deduplicate custom menu commands with the same name.
+* Option to display spaces in a document.
+* Support count parameter for indent/outdent commands.
+* Support line wrapping according to the Unicode line breaking algorithm.
+* Fix change-word (cw) to not include trailing whitespace
+* Simplify and fix cursor positioning for delete word (dw)
+* Fix incorrect offset in text search with unicode normalization
+* Allow forward slash in YAML unquoted key
+* Highlight golang "~" operator
+* Recognize &= operator in rust syntax highlighting
+* Allow whitespace before and after '#' in C preprocessor directives
+* Fix items missing from search results.
+* Remove deprecated devlog syntax language
+
+
+# Upgrade Notes
+
+Add these rules to your configuration (`aretext -editconfig`) to enable markdown and todo.txt:
+```
+- name: markdown
+  pattern: "**/*.md"
+  config:
+    syntaxLanguage: markdown
+    lineWrap: "word"
+    styles:
+      tokenCustom1: {color: "teal", bold: true}        # Heading
+      tokenCustom2: {color: "default", italic: true}   # Emphasis
+      tokenCustom3: {color: "default", bold: true}     # Strong emphasis
+      tokenCustom4: {color: "purple", underline: true} # Link
+
+- name: todo
+  pattern: "**/*.todo" # or "**/todo.txt"
+  config:
+    autoIndent: true
+    syntaxLanguage: todotxt
+    tabExpand: true
+    tabSize: 4
+    showLineNumbers: true
+```
