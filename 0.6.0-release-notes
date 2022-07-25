@@ -2,7 +2,7 @@
 
 * Syntax highlighting for Markdown.
 * Syntax highlighting for [todo.txt](https://github.com/todotxt/todo.txt)
-* Allow customization of style background color, bold, italic, underline, and strikethrough.
+* Allow customization of [style background color, bold, italic, underline, and strikethrough](https://aretext.org/docs/config-reference/#styles)
 * Improve performance and memory usage of syntax highlighting.
 * Deduplicate custom menu commands with the same name.
 * Option to display spaces in a document.
